@@ -4,7 +4,7 @@ const toDoList = document.querySelector("#todo-list");
 
 const TODOS_KEY ="todos";
 
-const toDos =[]; //배열 선언
+let toDos =[]; //배열 선언
 
 
 function saveToDos()
@@ -19,6 +19,7 @@ function deleteToDo(event)
 // console.log(event.target.parentElement.innerText);  클릭한 정보를 알수있다.
     const li = event.target.parentElement;
     li.remove();
+
 }
 
 function paintToDo(newTodo)
@@ -50,6 +51,7 @@ function sayHello(item) {
     console.log("hello",item);
 }
 //item 미츳다 
+// parsedTodos.forEach((item) => console.log("hello ",item));
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
@@ -57,5 +59,6 @@ if(saveToDos)
 {
     const parsedTodos = JSON.parse(savedToDos);
     //JSON.parse() "[a,b,c,d"](string) -> [a,b,c,d] (array);
-    parsedTodos.forEach(sayHello);
+    toDos = parsedTodos; // 전에 값 저장
+    parsedTodos.forEach((item) => paintToDo(item));
 }
