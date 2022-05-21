@@ -19,14 +19,17 @@ function deleteToDo(event)
 // console.log(event.target.parentElement.innerText);  클릭한 정보를 알수있다.
     const li = event.target.parentElement;
     li.remove();
+    toDos =toDos.filter(Do => Do.id !== parseInt(li.id));
+    saveToDos();
 
 }
 
 function paintToDo(newTodo)
 {
     const li = document.createElement("li");
+    li.id = newTodo.id; //id값을 정해줄수 있다.
     const span = document.createElement("span");
-    span.innerText = newTodo;
+    span.innerText = newTodo.text;
     const button = document.createElement("button");
     button.innerText="✔";
     button.addEventListener("click",deleteToDo)
@@ -40,9 +43,13 @@ function handleToDoSubmit(event)
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
-    toDos.push(newTodo);
-    paintToDo(newTodo);
-    saveToDos(toDos);
+    const newTodoObj ={
+        text: newTodo,
+        id: Date.now(),
+    };
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
+    saveToDos();
 }
 
 toDoForm.addEventListener("submit",handleToDoSubmit);
@@ -55,7 +62,7 @@ function sayHello(item) {
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
-if(saveToDos)
+if(savedToDos)
 {
     const parsedTodos = JSON.parse(savedToDos);
     //JSON.parse() "[a,b,c,d"](string) -> [a,b,c,d] (array);
