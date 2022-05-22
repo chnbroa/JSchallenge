@@ -6,46 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/17ba4552da.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
     <script src="js/greeting.js" defer></script>
     <script src="js/clock.js" defer></script>
     <script src="js/todo.JS" defer></script>
     <script src="js/weather.js" defer></script>
+    <script src="js/background.js" defer></script>
+
 </head>
 
 <body>
     <div class="login">
-        <h1 class="">Name</h1>
+        <h1 class="">TodoList</h1>
         <form class="hidden" id="login-form">
             <input required maxlength="15" type="text" placeholder="What is Your name?" />
-            <input type="submit" value="Log In" />
+            <button><i class="fa-solid fa-right-to-bracket"></i></button>
         </form>
     </div>
-
-    <section class="top hidden">
+    <section class="top">
         <div class="top_left">
-            <h1 class="hidden" id="greeting"></h1>
+            <h1 class="" id="greeting"></h1>
         </div>
-
         <div class="top_right">
             <h2 id="clock">00:00:00</h2>
-
             <div class="" id="weather">
-                <span></span>
-                <span></span>
+                <div class="CurrIcon"></div>
+                <div class="weather_div">
+                    <span class="city"></span>
+                    <span class="weathertemp"></span>
+                </div>
+
             </div>
         </div>
     </section>
-
     <section class="todolist hidden">
-        <form action="" id="todo-form">
+        <div id="div_top">
+            <h1>TodoList</h1>
+            <form action="" id="todo-form">
+                <input type="text" placeholder="Write a To Do and Press Enter" required />
+                <button><i class="fa-solid fa-circle-plus"></i></button>
+            </form>
+        </div>
 
-            <input type="text" placeholder="Write a To Do and Press Enter" required />
-            <input type="submit" value="+" />
-        </form>
-        <ul id="todo-list">
+        <div class="">
+            <ul id="todo-list">
+            </ul>
+        </div>
 
-        </ul>
     </section>
 
 
